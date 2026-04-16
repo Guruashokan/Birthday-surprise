@@ -1,0 +1,149 @@
+/* ============================================================
+   GLOBAL DESIGN SYSTEM — Birthday Surprise
+   ============================================================ */
+
+:root {
+  --pink-light: #fde8f0;
+  --pink-soft:  #f9b8d4;
+  --pink-mid:   #e87aac;
+  --rose:       #c0527a;
+  --gold:       #f5c97a;
+  --gold-light: #fdefc0;
+  --lavender:   #c9aee6;
+  --lavender-mid: #a07cc5;
+  --lavender-deep: #6b4fa0;
+  --night:      #0d0a14;
+  --night-mid:  #1a1226;
+  --white-soft: rgba(255,255,255,0.92);
+  --glass-bg:   rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.18);
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Dancing Script', cursive;
+  --font-sans:  'Inter', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: none;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--night);
+  color: var(--white-soft);
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--night); }
+::-webkit-scrollbar-thumb { background: var(--pink-mid); border-radius: 10px; }
+
+/* ── Selection ── */
+::selection { background: rgba(232, 122, 172, 0.35); color: #fff; }
+
+/* ── Utility Classes ── */
+.section-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 24px;
+}
+
+/* ── Gradient Text ── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--pink-soft), var(--gold), var(--lavender));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Keyframes ── */
+@keyframes floatUp {
+  0%   { transform: translateY(0px); opacity: 1; }
+  100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.3); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.15); }
+  70%       { transform: scale(1); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 8px var(--pink-mid)); }
+  50%       { filter: drop-shadow(0 0 28px var(--pink-soft)) drop-shadow(0 0 8px var(--gold)); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.4); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes wavePulse {
+  0%, 100% { transform: scaleY(0.3); }
+  50%       { transform: scaleY(1); }
+}
+
+@keyframes starGrow {
+  0%   { transform: scale(1); opacity: 0.8; }
+  50%  { transform: scale(3); opacity: 1; }
+  100% { transform: scale(2.5) rotate(20deg); opacity: 1; }
+}
+
+@keyframes particleFloat {
+  0%   { transform: translate(0,0) rotate(0deg); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) rotate(720deg); opacity: 0; }
+}
+
+/* ── Cursor Sparkle ── */
+.cursor-sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: fadeOut 0.6s ease forwards;
+}
+@keyframes fadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section-wrapper { padding: 3rem 1.25rem; }
+}
