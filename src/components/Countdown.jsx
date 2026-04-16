@@ -66,8 +66,7 @@ export default function Countdown({ targetDateStr, onUnlock }) {
           color: 'rgba(245,201,122,0.7)', marginBottom: '1rem',
         }}>Please wait...</p>
         <h1 
-          onDoubleClick={() => onUnlock()}
-          title="Double click to test unlock"
+          className="countdown-title"
           style={{
             fontFamily: 'var(--font-script)',
             fontSize: 'clamp(2.5rem, 6vw, 4rem)',
@@ -76,8 +75,7 @@ export default function Countdown({ targetDateStr, onUnlock }) {
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
             marginBottom: '4rem',
-            filter: 'drop-shadow(0 0 20px rgba(249,184,212,0.3))',
-            cursor: 'pointer'
+            filter: 'drop-shadow(0 0 20px rgba(249,184,212,0.3))'
         }}>
           Something special is unlocking soon
         </h1>
